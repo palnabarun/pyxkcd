@@ -39,11 +39,6 @@ jobs:
           python -m sigstore sign "${dist}" \
             --output-signature signing-artifacts/"${dist_base}.sig" \
             --output-certificate signing-artifacts/"${dist_base}.crt"
-
-          python -m sigstore verify "${dist}" \
-            --cert "signing-artifacts/${dist_base}.crt" \
-            --signature "signing-artifacts/${dist_base}.sig" \
-            --cert-oidc-issuer https://token.actions.githubusercontent.com
         done
 
     - name: upload artifacts to github
